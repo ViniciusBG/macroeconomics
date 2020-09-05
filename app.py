@@ -40,12 +40,15 @@ def ipca():
 
 def main():
     #dolar()
+    st.write("Este site é um teste de deployment com o módulo Streamlit. Aqui temos os gráficos do dolar comerial e do IPCA.")
     dolar_plot = dolar()
     st.markdown("<h1 style='text-align: center; color: Black;'>Dolar</h1>", unsafe_allow_html=True)
     st.write(dolar_plot)
     ipca_plot = ipca()
     st.markdown("<h1 style='text-align: center; color: Black;'>IPCA</h1>", unsafe_allow_html=True)
     st.write(ipca_plot)
+    st.write("Por Vinicius Bastos Gomes")
+
 
 
     #ltn = plot_titulo(LTN)
