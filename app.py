@@ -21,10 +21,6 @@ def dolar():
     dolar_plot = px.line(data_frame=dolar,x='data',y='valor')
     return dolar_plot
 
-dolar_plot = dolar()
-st.markdown("<h1 style='text-align: center; color: Black;'>Dolar</h1>", unsafe_allow_html=True)
-st.write(dolar_plot)
-
 def plot_titulo(url):
     titulo=pd.ExcelFile(url)
     titulo_df =titulo.parse(0,header=[1])
@@ -33,18 +29,26 @@ def plot_titulo(url):
         fig.add_trace(go.Scatter(x=titulo_df['Dia'],y=titulo_df[f'{i}'],name=f'{i}'))
     return fig
 
-select = st.selectbox('Qual título você deseja visualizar?',['','LTN','LFT','NTNB Principal'])
-if select == 'LTN':
-    ltn = plot_titulo(LTN)
-    st.markdown("<h1 style='text-align: center; color: Black;'>LTN</h1>", unsafe_allow_html=True)
-    st.write(ltn)
-elif select == 'LFT':
-    lft = plot_titulo(LFT)
-    st.markdown("<h1 style='text-align: center; color: Black;'>LFT</h1>", unsafe_allow_html=True)
-    st.write(lft)
-elif select == 'NTNB Principal':
-    ntnb_p = plot_titulo(NTNB_p)
-    st.markdown("<h1 style='text-align: center; color: Black;'>NTNB Principal</h1>", unsafe_allow_html=True)
-    st.write(ntnb_p)
-else:
-    pass
+def main():
+    dolar()
+    dolar_plot = dolar()
+    st.markdown("<h1 style='text-align: center; color: Black;'>Dolar</h1>", unsafe_allow_html=True)
+    st.write(dolar_plot)
+    select = st.selectbox('Qual título você deseja visualizar?',['','LTN','LFT','NTNB Principal'])
+    if select == 'LTN':
+        ltn = plot_titulo(LTN)
+        st.markdown("<h1 style='text-align: center; color: Black;'>LTN</h1>", unsafe_allow_html=True)
+        st.write(ltn)
+    elif select == 'LFT':
+        lft = plot_titulo(LFT)
+        st.markdown("<h1 style='text-align: center; color: Black;'>LFT</h1>", unsafe_allow_html=True)
+        st.write(lft)
+    elif select == 'NTNB Principal':
+        ntnb_p = plot_titulo(NTNB_p)
+        st.markdown("<h1 style='text-align: center; color: Black;'>NTNB Principal</h1>", unsafe_allow_html=True)
+        st.write(ntnb_p)
+    else:
+        pass
+
+if __name__=='__main__':
+    main()
