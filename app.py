@@ -34,21 +34,24 @@ def main():
     dolar_plot = dolar()
     st.markdown("<h1 style='text-align: center; color: Black;'>Dolar</h1>", unsafe_allow_html=True)
     st.write(dolar_plot)
-    select = st.selectbox('Qual título você deseja visualizar?',['','LTN','LFT','NTNB Principal'])
-    if select == 'LTN':
-        ltn = plot_titulo(LTN)
-        st.markdown("<h1 style='text-align: center; color: Black;'>LTN</h1>", unsafe_allow_html=True)
-        st.write(ltn)
-    elif select == 'LFT':
-        lft = plot_titulo(LFT)
-        st.markdown("<h1 style='text-align: center; color: Black;'>LFT</h1>", unsafe_allow_html=True)
-        st.write(lft)
-    elif select == 'NTNB Principal':
-        ntnb_p = plot_titulo(NTNB_p)
-        st.markdown("<h1 style='text-align: center; color: Black;'>NTNB Principal</h1>", unsafe_allow_html=True)
-        st.write(ntnb_p)
-    else:
-        pass
+    dolar_plot2 = dolar()
+    st.markdown("<h1 style='text-align: center; color: Black;'>Dolar</h1>", unsafe_allow_html=True)
+    st.write(dolar_plot2)
+    #select = st.selectbox('Qual título você deseja visualizar?',['','LTN','LFT','NTNB Principal'])
+    #if select == 'LTN':
+    #    ltn = plot_titulo(LTN)
+    #    st.markdown("<h1 style='text-align: center; color: Black;'>LTN</h1>", unsafe_allow_html=True)
+    #    st.write(ltn)
+    #elif select == 'LFT':
+    #    lft = plot_titulo(LFT)
+    #    st.markdown("<h1 style='text-align: center; color: Black;'>LFT</h1>", unsafe_allow_html=True)
+    #    st.write(lft)
+    #elif select == 'NTNB Principal':
+    #    ntnb_p = plot_titulo(NTNB_p)
+    #    st.markdown("<h1 style='text-align: center; color: Black;'>NTNB Principal</h1>", unsafe_allow_html=True)
+    #    st.write(ntnb_p)
+    #else:
+    #    pass
 
 if __name__=='__main__':
     main()
