@@ -43,7 +43,7 @@ def main():
     dolar_plot = dolar()
     st.markdown("<h1 style='text-align: center; color: Black;'>Dolar</h1>", unsafe_allow_html=True)
     st.write(dolar_plot)
-    ipca_plot - ipca()
+    ipca_plot = ipca()
     st.markdown("<h1 style='text-align: center; color: Black;'>IPCA</h1>", unsafe_allow_html=True)
     st.write(ipca_plot)
 
