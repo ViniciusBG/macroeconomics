@@ -34,9 +34,9 @@ def main():
     dolar_plot = dolar()
     st.markdown("<h1 style='text-align: center; color: Black;'>Dolar</h1>", unsafe_allow_html=True)
     st.write(dolar_plot)
-    dolar_plot2 = dolar()
-    st.markdown("<h1 style='text-align: center; color: Black;'>Dolar</h1>", unsafe_allow_html=True)
-    st.write(dolar_plot2)
+    ltn = plot_titulo(LTN)
+    st.markdown("<h1 style='text-align: center; color: Black;'>LTN</h1>", unsafe_allow_html=True)
+    st.write(ltn)
     #select = st.selectbox('Qual título você deseja visualizar?',['','LTN','LFT','NTNB Principal'])
     #if select == 'LTN':
     #    ltn = plot_titulo(LTN)
