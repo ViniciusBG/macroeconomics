@@ -25,7 +25,7 @@ dolar_plot = dolar()
 st.markdown("<h1 style='text-align: center; color: Black;'>Dolar</h1>", unsafe_allow_html=True)
 st.write(dolar_plot)
 
-def plot_titulo(url):stream
+def plot_titulo(url):
     titulo=pd.ExcelFile(url)
     titulo_df =titulo.parse(0,header=[1])
     fig = go.Figure()
