@@ -17,7 +17,7 @@ def dolar():
     dolar = pd.DataFrame(yy)
     dolar['data'] = pd.to_datetime(dolar['data'],dayfirst=True)
     dolar = dolar.sort_values('data')
-    dolar = dolar[dolar['data']>'01/01/2020']
+    dolar = dolar[dolar['data']>'01/01/2017']
     dolar_plot = px.line(data_frame=dolar,x='data',y='valor')
     return dolar_plot
 def ipca():
@@ -26,7 +26,7 @@ def ipca():
     dolar = pd.DataFrame(yy)
     dolar['data'] = pd.to_datetime(dolar['data'],dayfirst=True)
     dolar = dolar.sort_values('data')
-    dolar = dolar[dolar['data']>'01/01/2020']
+    dolar = dolar[dolar['data']>'01/01/2015']
     dolar_plot = px.line(data_frame=dolar,x='data',y='valor')
     return dolar_plot
 
