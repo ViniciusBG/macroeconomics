@@ -42,6 +42,7 @@ def main():
     #dolar()
     st.sidebar.header("Gráficos")
     select = st.sidebar.selectbox("Qual gráfico você gostaria de ver?",("Dolar", "IPCA"))
+    st.sidebar.text("Desenvolvido por Vinicius B Gomes")
     if select == 'Dolar':
         dolar_plot = dolar()
         st.markdown("<h1 style='text-align: center; color: Black;'>Dolar</h1>", unsafe_allow_html=True)
