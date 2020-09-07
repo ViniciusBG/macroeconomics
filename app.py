@@ -25,13 +25,15 @@ def main():
     #dolar()
     st.sidebar.header("Gráficos")
     select = st.sidebar.selectbox("Qual gráfico você gostaria de ver?",("Dolar", "IPCA"))
+    data = st.sidebar.selectbox("Qual a data de início?",("2010",'2011','2012','2013','2014','2015','2016','2017','2018','2019','2020'))
     st.sidebar.text("Desenvolvido por Vinicius B Gomes")
+    
     if select == 'Dolar':
-        dolar_plot = plot(DOLAR,'01/01/2020')
+        dolar_plot = plot(DOLAR,f'01/01/{data}')
         st.markdown("<h1 style='text-align: center; color: Black;'>Dolar</h1>", unsafe_allow_html=True)
         st.write(dolar_plot)
     if select == 'IPCA':
-        ipca_plot = plot(IPCA,'01/01/2015')
+        ipca_plot = plot(IPCA,f'01/01/{data}')
         st.markdown("<h1 style='text-align: center; color: Black;'>IPCA</h1>", unsafe_allow_html=True)
         st.write(ipca_plot)
 
