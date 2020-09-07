@@ -31,7 +31,7 @@ def main():
         st.markdown("<h1 style='text-align: center; color: Black;'>Dolar</h1>", unsafe_allow_html=True)
         st.write(dolar_plot)
     if select == 'IPCA':
-        ipca_plot = plot(DOLAR,'01/01/2020')
+        ipca_plot = plot(IPCA,'01/01/2015')
         st.markdown("<h1 style='text-align: center; color: Black;'>IPCA</h1>", unsafe_allow_html=True)
         st.write(ipca_plot)
 
