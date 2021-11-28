@@ -25,16 +25,16 @@ def main():
     )
     st.sidebar.text("Desenvolvido por Vinicius B Gomes")
 
-    df = download_data(source)
+    df = download_data(source,data)
 
     if output_format == "Tabela":
         st.dataframe(df)
     else:
-        graph = plot(df, data)
+        graph = plot(df)
         st.write(graph)
 
 
-def download_data(ativo):
+def download_data(ativo, data_inicio):
 
     url = conf["Sources"][ativo]
 
@@ -44,15 +44,15 @@ def download_data(ativo):
     dataframe = pd.DataFrame(json_request)
     dataframe["data"] = pd.to_datetime(dataframe["data"], dayfirst=True)
 
-    sorted_dataframe = dataframe.sort_values("data")
+    filtered_data = dataframe[dataframe["data"] > data_inicio]
+    sorted_dataframe = filtered_data.sort_values("data")
 
     return sorted_dataframe
 
 
-def plot(data, data_inicio):
-
-    filtered_data = data[data["data"] > data_inicio]
-    plot = px.line(data_frame=filtered_data, x="data", y="valor")
+def plot(data):
+    
+    plot = px.line(data_frame=data, x="data", y="valor")
     plot = plot.update_yaxes(rangemode="tozero")
 
     return plot
