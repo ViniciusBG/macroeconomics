@@ -8,13 +8,11 @@ numpy>=1.9.2
 scipy>=0.15.1
 xlrd >= 1.0.0
 lightgbm
-
-
 MarkupSafe==1.1.1
 Werkzeug==0.15.5
-
 matplotlib>=1.4.3
 pandas>=0.19
 flasgger==0.9.4
 streamlit
 plotly
+omegaconf

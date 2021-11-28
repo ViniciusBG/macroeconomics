@@ -4,41 +4,59 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 import plotly.graph_objects as go
+from omegaconf import OmegaConf
 
-#urls
-DOLAR = 'https://api.bcb.gov.br/dados/serie/bcdata.sgs.10813/dados?formato=json'
-IPCA = 'http://api.bcb.gov.br/dados/serie/bcdata.sgs.16121/dados?formato=json'
-
-def plot(ativo,data_inicio):
-    y = requests.get(ativo).content
-    yy = json.loads(y)
-    dolar = pd.DataFrame(yy)
-    dolar['data'] = pd.to_datetime(dolar['data'],dayfirst=True)
-    dolar = dolar.sort_values('data')
-    dolar = dolar[dolar['data']>data_inicio]
-    dolar_plot = px.line(data_frame=dolar,x='data',y='valor')
-    return dolar_plot
-
+conf = OmegaConf.load("globals.yaml")
 
 
 def main():
-    #dolar()
+
     st.sidebar.header("Gráficos")
-    select = st.sidebar.selectbox("Qual gráfico você gostaria de ver?",("Dolar", "IPCA"))
-    data = st.sidebar.selectbox("Qual a data de início?",("2010",'2011','2012','2013','2014','2015','2016','2017','2018','2019','2020'))
+    source = st.sidebar.selectbox(
+        "Qual gráfico você gostaria de ver?", (conf["Sources"].keys())
+    )
+    data = st.sidebar.selectbox(
+        "Qual a data de início?",
+        (conf["AVAILABLE_YEARS"]),
+    )
+    output_format = st.sidebar.selectbox(
+        "O que você deseja ver?",
+        (conf["OUTPUTS"]),
+    )
     st.sidebar.text("Desenvolvido por Vinicius B Gomes")
-    
-    if select == 'Dolar':
-        dolar_plot = plot(DOLAR,f'01/01/{data}')
-        st.markdown("<h1 style='text-align: center; color: Black;'>Dolar</h1>", unsafe_allow_html=True)
-        st.write(dolar_plot)
-    if select == 'IPCA':
-        ipca_plot = plot(IPCA,f'01/01/{data}')
-        st.markdown("<h1 style='text-align: center; color: Black;'>IPCA</h1>", unsafe_allow_html=True)
-        st.write(ipca_plot)
+
+    df = download_data(source)
+
+    if output_format == "Tabela":
+        st.dataframe(df)
+    else:
+        graph = plot(df, data)
+        st.write(graph)
 
 
+def download_data(ativo):
+
+    url = conf["Sources"][ativo]
+
+    request = requests.get(url).content
+    json_request = json.loads(request)
+
+    dataframe = pd.DataFrame(json_request)
+    dataframe["data"] = pd.to_datetime(dataframe["data"], dayfirst=True)
+
+    sorted_dataframe = dataframe.sort_values("data")
+
+    return sorted_dataframe
 
 
-if __name__=='__main__':
+def plot(data, data_inicio):
+
+    filtered_data = data[data["data"] > data_inicio]
+    plot = px.line(data_frame=filtered_data, x="data", y="valor")
+    plot = plot.update_yaxes(rangemode="tozero")
+
+    return plot
+
+
+if __name__ == "__main__":
     main()
