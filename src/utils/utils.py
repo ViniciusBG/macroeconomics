@@ -2,9 +2,6 @@ import requests
 import json
 import pandas as pd
 import plotly.express as px
-import streamlit as st
-import plotly.graph_objects as go
-from omegaconf import OmegaConf
 
 
 def download_data(url, data_inicio):
@@ -22,7 +19,7 @@ def download_data(url, data_inicio):
 
 
 def plot(data):
-    
+
     plot = px.line(data_frame=data, x="data", y="valor")
     plot = plot.update_yaxes(rangemode="tozero")
 
