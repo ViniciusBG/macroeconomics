@@ -7,7 +7,6 @@ conf = OmegaConf.load("globals.yaml")
 
 
 def main():
-
     st.sidebar.header("Gráficos")
 
     source = st.sidebar.selectbox(

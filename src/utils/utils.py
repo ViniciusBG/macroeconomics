@@ -5,7 +5,6 @@ import plotly.express as px
 
 
 def download_data(url, data_inicio):
-
     request = requests.get(url).content
     json_request = json.loads(request)
 
@@ -19,7 +18,6 @@ def download_data(url, data_inicio):
 
 
 def plot(data):
-
     plot = px.line(data_frame=data, x="data", y="valor")
     plot = plot.update_yaxes(rangemode="tozero")
 
