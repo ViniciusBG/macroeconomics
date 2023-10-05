@@ -17,5 +17,5 @@ AVAILABLE_YEARS:
   - "2020"
 
 OUTPUTS:
-  - "Tabela"
   - 'Gráfico'
+  - "Tabela"

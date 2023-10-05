@@ -2,7 +2,7 @@
 FROM python:3.8-slim-buster
 
 # set the working directory in the container
-WORKDIR /app
+WORKDIR /app/src
 
 # copying only requirements
 COPY requirements.txt requirements.txt
