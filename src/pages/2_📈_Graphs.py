@@ -4,13 +4,9 @@ from omegaconf import OmegaConf
 from utils.utils import download_data, plot
 
 
-
-
 conf = OmegaConf.load("globals.yaml")
 
-st.set_page_config(page_title="Plotting Demo", page_icon="📈")
-
-
+st.set_page_config(page_title="Graphs", page_icon="📈")
 
 
 def main():
