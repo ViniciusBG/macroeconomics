@@ -30,5 +30,5 @@ st.markdown(
     9) Monitoring experiments: MLFlow\n
     10) Deployment: FastAPI,Streamlit, Flask, Gradio, Docker
 
-    """ # noqa
+    """  # noqa
 )
