@@ -1,4 +1,7 @@
 import streamlit as st
+import requests
+import json
+import pandas as pd 
 
 st.set_page_config(
     page_title="Hello",
@@ -32,3 +35,27 @@ st.markdown(
 
     """  # noqa
 )
+
+
+def call_api():
+    response = requests.get("http://fastapi:80/test").content
+    return json.loads(response)
+
+st.write(f"### Results from the API: {call_api()}")
+
+
+
+def call_api_json():
+    response = requests.get("http://fastapi:80/test_json").content
+    return json.loads(response)
+
+
+
+
+def download_data(url="http://api.bcb.gov.br/dados/serie/bcdata.sgs.16121/dados?formato=json"):
+    request = requests.get(url).json()
+    json_request = json.loads(request)
+    json_request = json_request.json()
+    return json_request
+
+st.write(pd.DataFrame(call_api_json()))
