@@ -10,3 +10,14 @@ services:
         restart: always
         ports:
           - "8501:8501"
+        depends_on:
+            - fastapi
+
+    fastapi:
+        build:
+            context: .
+            dockerfile: Dockerfile_API  # Assuming your FastAPI Dockerfile is named "Dockerfile"
+        container_name: fastapi_app
+        restart: always
+        ports:
+          - "8000:8000"  # Expose the FastAPI service on port 8000
